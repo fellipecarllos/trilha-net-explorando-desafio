@@ -3,7 +3,12 @@ namespace DesafioProjetoHospedagem.Models
     public class Reserva
     {
         public List<Pessoa> Hospedes { get; set; }
-        public Suite Suite { get; set; }
+        public Reserva(Suite suite) 
+        {
+            this.Suite = suite;
+   
+        }
+                public Suite Suite { get; set; }
         public int DiasReservados { get; set; }
 
         public Reserva() { }
@@ -25,7 +30,7 @@ namespace DesafioProjetoHospedagem.Models
             {
                 // TODO: Retornar uma exception caso a capacidade seja menor que o número de hóspedes recebido
                 // *IMPLEMENTE AQUI*
-                throw new Exception("Capcidade da suite menor que a quantidade de hospedes.")
+                throw new Exception("Capcidade da suite menor que a quantidade de hospedes.");
             }
         }
 
@@ -57,7 +62,7 @@ namespace DesafioProjetoHospedagem.Models
             }
             else
             {
-                valor = (Suite.ValorDiaria * DiasReservados) * 0.90
+               valor = Suite.ValorDiaria * DiasReservados * 90 /100;
             }
 
             return valor;
